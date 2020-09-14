@@ -20,15 +20,12 @@ void loop() {
 }
 
 int toggle_state(int toggle) {
-  if (toggle = 0) {
-    return toggle;
-    digitalWrite(PIN_LED, 0);
+  if (toggle == 0) {
+    return 1;
     delay(1000);
-    toggle = 1;
   }
-  if (toggle = 1) {
-    digitalWrite(PIN_LED, 1);
+  if (toggle == 1) {
+    return 0;
     delay(1000);
-    toggle = 0;
   }
 }
