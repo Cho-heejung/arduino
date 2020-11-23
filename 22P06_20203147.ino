@@ -18,9 +18,9 @@
 #define _DIST_ALPHA 0.3 
 
 // Servo range
-#define _DUTY_MIN 1250   
+#define _DUTY_MIN 1280   
 #define _DUTY_NEU 1450     
-#define _DUTY_MAX 1650              
+#define _DUTY_MAX 1620              
 
 // Servo speed control
 #define _SERVO_ANGLE 13 
@@ -78,7 +78,7 @@ void setup() {
   duty_neutral = _DUTY_NEU;
   
   a = 70;
-  b = 400;
+  b = 370;
   correction_dist = 0;
   iter = 0; sum = 0;
   alpha = _DIST_ALPHA;
