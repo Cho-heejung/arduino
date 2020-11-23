@@ -204,7 +204,7 @@ float ir_distence_filter() {
     sum -= dist_list[LENGTH-i];
   }
 
-  dist_cali = sum/(LENGTH-k_LENGTH);
+  dist_cali = sum/(LENGTH-2*k_LENGTH);
 
   dist_ema = alpha * dist_cali + (1 - alpha) * dist_ema;
 
