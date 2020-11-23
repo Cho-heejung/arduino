@@ -23,8 +23,8 @@
 #define _DUTY_MAX 1650              
 
 // Servo speed control
-#define _SERVO_ANGLE 10 
-#define _SERVO_SPEED 50           
+#define _SERVO_ANGLE 13 
+#define _SERVO_SPEED 40           
 
 // Event periods
 #define _INTERVAL_DIST 20   
@@ -77,8 +77,8 @@ void setup() {
   ir_filtered_dist = 0;
   duty_neutral = _DUTY_NEU;
   
-  a = 20;
-  b = 223;
+  a = 70;
+  b = 400;
   correction_dist = 0;
   iter = 0; sum = 0;
   alpha = _DIST_ALPHA;
