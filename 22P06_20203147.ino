@@ -18,13 +18,13 @@
 #define _DIST_ALPHA 0.3 
 
 // Servo range
-#define _DUTY_MIN 1280   
+#define _DUTY_MIN 1000   
 #define _DUTY_NEU 1450     
-#define _DUTY_MAX 1620              
+#define _DUTY_MAX 2000              
 
 // Servo speed control
-#define _SERVO_ANGLE 13 
-#define _SERVO_SPEED 40           
+#define _SERVO_ANGLE 30
+#define _SERVO_SPEED 30           
 
 // Event periods
 #define _INTERVAL_DIST 20   
@@ -32,7 +32,7 @@
 #define _INTERVAL_SERIAL 100 
 
 // PID parameters
-#define _KP 0.05   
+#define _KP 1.5
 
 //filter
 #define LENGTH 30
@@ -74,7 +74,6 @@ void setup() {
   last_sampling_time_dist = last_sampling_time_servo = last_sampling_time_serial = 0;
   event_dist = event_servo = event_serial = false; 
   dist_target = _DIST_TARGET; 
-  ir_filtered_dist = 0;
   duty_neutral = _DUTY_NEU;
   
   a = 70;
@@ -118,7 +117,7 @@ void loop() {
   if(event_dist) {
     event_dist = false;
   // get a distance reading from the distance sensor
-    ir_filtered_dist = ir_distence_filter(); 
+    float ir_filtered_dist = ir_distence_filter(); 
 
   // PID control logic
     error_curr = dist_target - ir_filtered_dist;
@@ -126,7 +125,7 @@ void loop() {
     control = pterm;
 
   // duty_target = f(duty_neutral, control)
-    duty_target = pterm * duty_neutral;
+    duty_target = duty_neutral + control;
 
   // keep duty_target value within the range of [_DUTY_MIN, _DUTY_MAX]
     if (duty_target < _DUTY_MIN) {
@@ -157,12 +156,12 @@ void loop() {
     Serial.print("dist_ir:");
     Serial.print(dist_cali);
     Serial.print(",pterm:");
-    Serial.print(pterm);
-//    Serial.print(",duty_target:");
-//    Serial.print(map(duty_target,1000,2000,410,510));
+    Serial.print(map(pterm,-1000,1000,510,610));
+    Serial.print(",duty_target:");
+    Serial.print(map(duty_target, 1000, 2000, 410, 510));
     Serial.print(",duty_curr:");
     Serial.print(map(duty_curr, 1000, 2000, 410, 510));
-//    Serial.print(",Min:100,Low:200,dist_target:255,High:310,Max:410");
+    Serial.print(",Min:100,Low:200,dist_target:255,High:310,Max:410");
     Serial.print(",dist_ema:");
     Serial.println(dist_ema);
   }
