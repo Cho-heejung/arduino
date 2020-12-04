@@ -29,8 +29,8 @@
 #define _INTERVAL_SERIAL 100 
 
 // PID parameters
-#define _KP 1.8
-#define _KD 52  
+#define _KP 1.7
+#define _KD 53 
 
 #define _INTERVAL_DIST 30  
 #define DELAY_MICROS  1500 
