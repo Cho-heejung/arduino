@@ -16,7 +16,7 @@
 
 // Servo range
 #define _DUTY_MIN 1050   
-#define _DUTY_NEU 1450     
+#define _DUTY_NEU 1600     
 #define _DUTY_MAX 2050              
 
 // Servo speed control
@@ -29,8 +29,8 @@
 #define _INTERVAL_SERIAL 100 
 
 // PID parameters
-#define _KP 3.6
-#define _KD 85  
+#define _KP 1.8
+#define _KD 52  
 
 #define _INTERVAL_DIST 30  
 #define DELAY_MICROS  1500 
